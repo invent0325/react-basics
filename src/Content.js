@@ -23,8 +23,9 @@ const Content = () => {
 
   const handleCheck = (id) => {
     const listItems = items.map((item) =>
-      item.id === id ? { ...item, checked: !item.checked } : item);
-      setItems(listItems);
+      item.id === id ? { ...item, checked: !item.checked } : item
+    );
+    setItems(listItems);
     console.log("Key : " + id);
   };
 
