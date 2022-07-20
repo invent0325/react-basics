@@ -1,15 +1,26 @@
 import React from "react";
+import { useState } from "react";
 
 const Content = () => {
+  const [name, setName] = useState("Dave");
+  const [count, setCount] = useState(0);
+
   const handleNameChange = () => {
-    const names = ["Jill", "Jane", "John"];
-    const check = Math.floor(Math.random() * 3);
-    return names[check];
+    const names = ["Jill", "Jane", "John", "Mark", "Cuban", "Barry", "Larry"];
+    const check = Math.floor(Math.random() * names.length);
+    setName(names[check]);
   };
 
-  const handleClick = () => {
-    console.log("Clicked Me!");
+  const handleClickIncrement = () => {
+    setCount(count + 1);
+    console.log(count);
   };
+
+  const handleClickDecrement = () => {
+    setCount(count - 1);
+    console.log(count);
+  };
+
 
   const handleClick2 = (name) => {
     console.log(`${name} was clicked`);
@@ -19,17 +30,28 @@ const Content = () => {
     console.log(e.target.innerText);
   };
 
-
-
   return (
     <main>
-      <p>Hello {handleNameChange()}!</p>
+      <p>Hello {name}!</p>
       <br />
-      <button onClick={handleClick}>Click Me!</button>
       <br />
-      <button onClick={() => handleClick2("Dave")}>Display Name!</button>
+      <button id="change" onClick={handleNameChange}>
+        Change Name!
+      </button>
       <br />
-      <button onClick={(e) => handleClick3(e)}>Event Details!</button>
+      <button id="display" onClick={() => handleClick2("Dave")}>
+        Display Name!
+      </button>
+      <br />
+      <button id="event" onClick={(e) => handleClick3(e)}>
+        Event Details!
+      </button>
+
+      <br />
+      <button onClick={handleClickIncrement}>Increase Count!</button>
+
+      <br />
+      <button onClick={handleClickDecrement}>Decrease Count!</button>
     </main>
   );
 };

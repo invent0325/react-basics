@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <p>Copyright &copy; {today.getFullYear()}</p>
+      <p>&copy;Copyright Lawrence University {today.getFullYear()}</p>
     </footer>
   );
 };
