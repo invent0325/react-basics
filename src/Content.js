@@ -8,7 +8,7 @@ const Content = () => {
   };
 
   const handleClick = () => {
-    console.log("handleClick");
+    console.log("Clicked Me!");
   };
 
   const handleClick2 = (name) => {
