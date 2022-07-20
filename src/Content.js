@@ -1,57 +1,48 @@
 import React from "react";
 import { useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Content = () => {
-  const [name, setName] = useState("Dave");
-  const [count, setCount] = useState(0);
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: false,
+      item: "One half pound bag of Cocoa Covered Almonds Unsalted",
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2",
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3",
+    },
+  ]);
 
-  const handleNameChange = () => {
-    const names = ["Jill", "Jane", "John", "Mark", "Cuban", "Barry", "Larry"];
-    const check = Math.floor(Math.random() * names.length);
-    setName(names[check]);
-  };
-
-  const handleClickIncrement = () => {
-    setCount(count + 1);
-    console.log(count);
-  };
-
-  const handleClickDecrement = () => {
-    setCount(count - 1);
-    console.log(count);
-  };
-
-
-  const handleClick2 = (name) => {
-    console.log(`${name} was clicked`);
-  };
-
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
+  const handleCheck = (id) => {
+    const listItems = items.map((item) =>
+      item.id === id ? { ...item, checked: !item.checked } : item);
+      setItems(listItems);
+    console.log("Key : " + id);
   };
 
   return (
     <main>
-      <p>Hello {name}!</p>
-      <br />
-      <br />
-      <button id="change" onClick={handleNameChange}>
-        Change Name!
-      </button>
-      <br />
-      <button id="display" onClick={() => handleClick2("Dave")}>
-        Display Name!
-      </button>
-      <br />
-      <button id="event" onClick={(e) => handleClick3(e)}>
-        Event Details!
-      </button>
-
-      <br />
-      <button onClick={handleClickIncrement}>Increase Count!</button>
-
-      <br />
-      <button onClick={handleClickDecrement}>Decrease Count!</button>
+      <ul>
+        {items.map((item) => (
+          <li className="item" key={item.id}>
+            <input
+              type="checkbox"
+              checked={item.checked}
+              onChange={() => handleCheck(item.id)}
+            />
+            <label>{item.item}</label>
+            <FaTrashAlt role="button" tabIndex="0" />
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
