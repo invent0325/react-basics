@@ -12,12 +12,17 @@ const Content = () => {
     {
       id: 2,
       checked: false,
-      item: "Item 2",
+      item: "Roasted cookies",
     },
     {
       id: 3,
       checked: false,
-      item: "Item 3",
+      item: "Chocolate cookies",
+    },
+    {
+      id: 4,
+      checked: false,
+      item: "Home baked cookies",
     },
   ]);
 
